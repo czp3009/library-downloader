@@ -1,0 +1,6 @@
+name: LibraryDownloader
+main: com.hiczp.spigot.librarydownloader.LibraryDownloader
+version: @version@
+load: STARTUP
+author: czp3009
+website: https://github.com/czp3009/library-downloader

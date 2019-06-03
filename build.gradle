@@ -1,0 +1,40 @@
+import org.apache.tools.ant.filters.ReplaceTokens
+
+plugins {
+    id 'java'
+}
+
+group 'com.hiczp.spigot'
+version '0.0.1'
+description 'Download libraries for other Spigot Plugins'
+
+sourceCompatibility = JavaVersion.VERSION_1_8
+
+repositories {
+    mavenCentral()
+    maven {
+        url = 'https://hub.spigotmc.org/nexus/content/repositories/snapshots/'
+        content {
+            includeGroup 'org.bukkit'
+            includeGroup 'org.spigotmc'
+        }
+    }
+    maven { url = 'https://oss.sonatype.org/content/repositories/snapshots' }
+}
+
+//spigot
+dependencies {
+    compileOnly 'org.spigotmc:spigot-api:1.13.2-R0.1-SNAPSHOT'
+}
+
+dependencies {
+    // https://mvnrepository.com/artifact/org.eclipse.aether/aether
+    implementation group: 'org.eclipse.aether', name: 'aether', version: '1.1.0', ext: 'pom'
+}
+
+processResources {
+    with copySpec {
+        from 'src/main/resources/plugin.yml'
+        filter(ReplaceTokens, tokens: [version: version])
+    } 
+}
