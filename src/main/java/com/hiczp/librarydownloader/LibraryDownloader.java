@@ -14,7 +14,7 @@ public class LibraryDownloader extends JavaPlugin {
         instance = this;
     }
 
-    public void resolve() {
-
+    public void download(String pluginName, ProjectObjectModel projectObjectModel) {
+        MavenDownloader.download(getLogger(), pluginName, getFile(), projectObjectModel);
     }
 }
